@@ -1,0 +1,45 @@
+---
+abstract: 'plugin for buzzword.org.uk utility functions'
+author:
+  - 'Toby Inkster <tobyink@cpan.org>'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+  Module::Signature: 0.66
+  Test::More: 0.61
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
+distribution_type: module
+generated_by: 'Module::Install version 1.00'
+keywords:
+  - SPARQL
+  - query
+  - extension
+  - functions
+  - utilities
+  - utility
+  - plugin
+  - RDF
+  - Semantic
+  - Web
+  - SemWeb
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: RDF-Query-Functions-Buzzword-Util
+no_index:
+  directory:
+    - inc
+    - t
+requires:
+  Data::UUID: 0
+  RDF::Query: 2.903
+  Scalar::Util: 0
+  XML::LibXML: 1.60
+  common::sense: 0
+resources:
+  bugtracker: http://rt.cpan.org/Dist/Display.html?Queue=RDF-Query-Functions-Buzzword-Util
+  homepage: http://search.cpan.org/dist/RDF-Query-Functions-Buzzword-Util/
+  license: http://dev.perl.org/licenses/
+  repository: http://goddamn.co.uk/viewvc/perlmods/RDF-Query-Functions-Buzzword-Util/
+version: 0.001
