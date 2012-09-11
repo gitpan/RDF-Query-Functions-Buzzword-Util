@@ -3,10 +3,9 @@ NAME
     utility functions
 
 SYNOPSIS
-      use RDF::TrineShortcuts qw[:all];
-      use Data::Dumper;
+      use RDF::TrineX::Functions -shortcuts;
   
-      my $data = rdf_parse(<<'TURTLE', type=>'turtle');
+      my $data = rdf_parse(<<'TURTLE', type => 'turtle', base => $base_uri);
       @prefix foaf: <http://xmlns.com/foaf/0.1/> .
       @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
   
@@ -17,7 +16,7 @@ SYNOPSIS
         foaf:mbox <mailto:tobyink@cpan.org> .
       TURTLE
   
-      $r = rdf_query(<<'SPARQL', $data);
+      my $query = RDF::Query->new(<<'SPARQL');
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
       PREFIX util: <http://buzzword.org.uk/2011/functions/util#>
       PREFIX junk: <urn:junk> 
@@ -34,7 +33,7 @@ SYNOPSIS
       }
       SPARQL
   
-      print Dumper(flatten_iterator($r, literal_as=>'ntriples'));
+      print $query->execute($data)->as_xml;
 
 DESCRIPTION
     This is a plugin for RDF::Query providing a number of extension
@@ -72,16 +71,19 @@ DESCRIPTION
 
     *   http://buzzword.org.uk/2011/functions/util#uuid_uri
 
+    Some of these are somewhat close to new functions introduced in SPARQL
+    1.1.
+
 SEE ALSO
     RDF::Query.
 
-    <http://perlrdf.org/>.
+    <http://www.perlrdf.org/>.
 
 AUTHOR
     Toby Inkster <tobyink@cpan.org>.
 
 COPYRIGHT
-    Copyright 2010-2011 Toby Inkster
+    Copyright 2010-2012 Toby Inkster
 
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.

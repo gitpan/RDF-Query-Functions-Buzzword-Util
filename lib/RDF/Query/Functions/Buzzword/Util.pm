@@ -1,8 +1,8 @@
 package RDF::Query::Functions::Buzzword::Util;
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
-use common::sense;
+use strict;
 use Data::UUID;
 use RDF::Query::Error qw(:try);
 use Scalar::Util qw(blessed reftype refaddr looks_like_number);
@@ -358,10 +358,9 @@ RDF::Query::Functions::Buzzword::Util - plugin for buzzword.org.uk utility funct
 
 =head1 SYNOPSIS
 
-  use RDF::TrineShortcuts qw[:all];
-  use Data::Dumper;
+  use RDF::TrineX::Functions -shortcuts;
   
-  my $data = rdf_parse(<<'TURTLE', type=>'turtle');
+  my $data = rdf_parse(<<'TURTLE', type => 'turtle', base => $base_uri);
   @prefix foaf: <http://xmlns.com/foaf/0.1/> .
   @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
   
@@ -372,7 +371,7 @@ RDF::Query::Functions::Buzzword::Util - plugin for buzzword.org.uk utility funct
     foaf:mbox <mailto:tobyink@cpan.org> .
   TURTLE
   
-  $r = rdf_query(<<'SPARQL', $data);
+  my $query = RDF::Query->new(<<'SPARQL');
   PREFIX foaf: <http://xmlns.com/foaf/0.1/>
   PREFIX util: <http://buzzword.org.uk/2011/functions/util#>
   PREFIX junk: <urn:junk> 
@@ -389,7 +388,7 @@ RDF::Query::Functions::Buzzword::Util - plugin for buzzword.org.uk utility funct
   }
   SPARQL
   
-  print Dumper(flatten_iterator($r, literal_as=>'ntriples'));
+  print $query->execute($data)->as_xml;
 
 =head1 DESCRIPTION
 
@@ -431,11 +430,19 @@ This is a plugin for RDF::Query providing a number of extension functions.
 
 =back
 
+Some of these are somewhat close to new functions introduced in SPARQL 1.1.
+
+=begin trustme
+
+=item C<install>
+
+=end trustme
+
 =head1 SEE ALSO
 
 L<RDF::Query>.
 
-L<http://perlrdf.org/>.
+L<http://www.perlrdf.org/>.
 
 =head1 AUTHOR
 
@@ -443,7 +450,8 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT
 
-Copyright 2010-2011 Toby Inkster
+Copyright 2010-2012 Toby Inkster
 
 This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
+
