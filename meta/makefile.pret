@@ -5,8 +5,8 @@
 	version_from      m`RDF::Query::Functions::Buzzword::Util`;
 	readme_from       m`RDF::Query::Functions::Buzzword::Util`;
 	test_requires     p`Test::More 0.61`;
-	test_requires     p`Data::UUID 0`;
-	test_requires     p`RDF::Query 2.903`;
-	test_requires     p`XML::LibXML 1.60`;
+	requires          p`Data::UUID 0`;
+	requires          p`RDF::Query 2.903`;
+	requires          p`XML::LibXML 1.60`;
 .
 

@@ -3,11 +3,8 @@ abstract: 'plugin for buzzword.org.uk utility functions'
 author:
   - 'Toby Inkster <tobyink@cpan.org>'
 build_requires:
-  Data::UUID: 0
   ExtUtils::MakeMaker: 6.36
-  RDF::Query: 2.903
   Test::More: 0.61
-  XML::LibXML: 1.60
 configure_requires:
   ExtUtils::MakeMaker: 6.36
 distribution_type: module
@@ -27,10 +24,13 @@ no_index:
     - t
     - xt
 requires:
+  Data::UUID: 0
+  RDF::Query: 2.903
+  XML::LibXML: 1.60
   perl: 5.005
 resources:
   bugtracker: http://rt.cpan.org/Dist/Display.html?Queue=RDF-Query-Functions-Buzzword-Util
   homepage: https://metacpan.org/release/RDF-Query-Functions-Buzzword-Util
   license: http://dev.perl.org/licenses/
   repository: https://bitbucket.org/tobyink/p5-rdf-query-functions-buzzword-util
-version: 0.002
+version: 0.003

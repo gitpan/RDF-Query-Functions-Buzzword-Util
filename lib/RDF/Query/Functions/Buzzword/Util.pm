@@ -1,6 +1,6 @@
 package RDF::Query::Functions::Buzzword::Util;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 use strict;
 use Data::UUID;
